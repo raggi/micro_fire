@@ -30,7 +30,6 @@ class MicroFire
   def initialize uri, token, room
     @stream = self.class.stream
     @json   = self.class.json
-    @uri    = URI.parse uri
     @token  = token
     @http   = Net::HTTP::Persistent.new
     # Don't do anything if not supported by net/http/persistent version or
@@ -39,7 +38,8 @@ class MicroFire
       @http.socket_options << [Socket::SOL_SOCKET, Socket::SO_KEEPALIVE, 1]
     end
     @pass   = 'x'
-    @room   = find_room(room)
+    @uri    = find_uri uri
+    @room   = find_room room
   end
 
   def join &block
@@ -63,6 +63,14 @@ class MicroFire
     res = req('/rooms.json', {}, :Get)
     res = res["rooms"].find { |rm| rm["name"] == room }
     res ? res["id"].to_i : raise("Could not find room by #{room}")
+  end
+
+  def find_uri uri
+    if uri =~ %r{https?://.*\..*}
+      URI.parse uri
+    else
+      URI.parse "https://#{uri}.campfirenow.com"
+    end
   end
 
   def action action

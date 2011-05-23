@@ -25,7 +25,7 @@ default, on other rubies it will try for yajl, then for json.
     keychain = OSXKeychain.new                # optional part of example
     token = keychain['campfire', ENV['USER']] # optional part of example
 
-    room = MicroFire.new 'https://raggi.campfirenow.com', token, 'ragville'
+    room = MicroFire.new 'raggi', token, 'ragville'
     room.join
     room.speak 'OHAI THERE'
     room.watch do |event|
