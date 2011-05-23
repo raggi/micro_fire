@@ -1,0 +1,67 @@
+= micro_fire
+
+http://rubygems.org/gems/micro_fire
+{Project}[http://rubygems.org/gems/micro_fire]
+{Documentation}[http://libraggi.rubyforge.org/micro_fire/README_rdoc.html]
+{Wiki}[http://wiki.github.com/raggi/micro_fire/]
+{Source Code}[http://github.com/raggi/micro_fire/]
+{Issues}[http://github.com/raggi/micro_fire/issues]
+{Rubyforge}[http://rubyforge.org/projects/libraggi]
+
+== DESCRIPTION:
+
+A micro single room Campfire interface that only depends on
+Net::HTTP::Persistent and a JSON library. On 1.9, it will use Psych by
+default, on other rubies it will try for yajl, then for json.
+
+== FEATURES/PROBLEMS:
+
+* Simples
+
+== SYNOPSIS:
+
+    BEGIN { require 'rubygems' }
+    require 'osx_keychain'                    # optional part of example
+    keychain = OSXKeychain.new                # optional part of example
+    token = keychain['campfire', ENV['USER']] # optional part of example
+
+    room = MicroFire.new 'https://raggi.campfirenow.com', token, 'ragville'
+    room.join
+    room.speak 'OHAI THERE'
+    room.watch do |event|
+      p event
+    end
+
+== REQUIREMENTS:
+
+* gem install net-http-persistent
+* a json library: yajl-ruby, or json, or psych
+
+== INSTALL:
+
+* gem install micro_fire
+
+== LICENSE:
+
+(The MIT License)
+
+Copyright (c) 2011 raggi
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
