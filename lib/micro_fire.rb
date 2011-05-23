@@ -44,14 +44,17 @@ class MicroFire
 
   def join &block
     req action('join'), &block
+    self
   end
 
   def speak message, &block
     req action('speak'), :message => { :body => message }, &block
+    self
   end
 
   def watch &block
     req action('live'), {}, :Get, stream, &block
+    self
   end
 
   private
