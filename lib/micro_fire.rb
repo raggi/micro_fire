@@ -6,7 +6,7 @@ require 'uri'
 require 'net/http/persistent'
 
 class MicroFire
-  VERSION = '1.0.0'
+  VERSION = '1.0.1'
 
   class << self
     attr_accessor :stream, :json
