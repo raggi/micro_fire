@@ -14,7 +14,6 @@ class MicroFire
   self.stream = URI.parse('https://streaming.campfirenow.com')
 
   json_libs = [
-    lambda { require 'psych'; Psych },
     lambda { require 'yajl' ; Yajl  },
     lambda { require 'json' ; JSON  },
     lambda { raise 'No suitable JSON lib could be found' }
